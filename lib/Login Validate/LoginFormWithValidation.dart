@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
+import '../Home/Home.dart';
 import 'HomePage.dart';
 
 class LoginFormValidation extends StatefulWidget {
@@ -27,7 +28,8 @@ class _LoginFormValidationState extends State<LoginFormValidation> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Login Page"),
+        backgroundColor: Colors.pink,
+        title: Text("Validate"),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -35,14 +37,20 @@ class _LoginFormValidationState extends State<LoginFormValidation> {
           key: formkey,
           child: Column(
             children: <Widget>[
+              SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 60.0),
                 child: Center(
                   child: Container(
                       width: 200,
-                      height: 150,
+                      height: 120,
                       child: Image.asset('asset/images/flutter-logo.png')),
                 ),
+              ),
+              SizedBox(
+                height: 30,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
@@ -71,26 +79,21 @@ class _LoginFormValidationState extends State<LoginFormValidation> {
                           errorText: "Password should be atleast 6 characters"),
                       MaxLengthValidator(15,
                           errorText:
-                          "Password should not be greater than 15 characters")
+                              "Password should not be greater than 15 characters")
                     ])
-                  //validatePassword,        //Function to check validation
-                ),
+                    //validatePassword,        //Function to check validation
+                    ),
               ),
-              FlatButton(
-                onPressed: () {
-                  //TODO FORGOT PASSWORD SCREEN GOES HERE
-                },
-                child: Text(
-                  'Forgot Password',
-                  style: TextStyle(color: Colors.blue, fontSize: 15),
-                ),
+              SizedBox(
+                height: 40,
               ),
               Container(
                 height: 50,
                 width: 250,
                 decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(20)),
+                  color: Colors.pinkAccent,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: FlatButton(
                   onPressed: () {
                     if (formkey.currentState.validate()) {
@@ -108,9 +111,28 @@ class _LoginFormValidationState extends State<LoginFormValidation> {
                 ),
               ),
               SizedBox(
-                height: 100,
+                height: 10,
               ),
-              Text('New User? Create Account')
+              Container(
+                height: 50,
+                width: 250,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => Home()),
+                    );
+                  },
+                  child: Text(
+                    'Cancle',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
